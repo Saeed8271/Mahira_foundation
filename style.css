@@ -1,0 +1,233 @@
+/* ---------------------------
+   Mahira Foundation - Styles
+   Soft feminine tones, modern
+   --------------------------- */
+
+/* Reset & base */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #2b2b2b;
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Color variables */
+:root{
+  --primary: #E91E63;    /* warm pink */
+  --secondary: #9C27B0;  /* rich purple */
+  --soft-bg: #FFF1F6;    /* very soft pink */
+  --muted: #6b6b6b;
+  --glass: rgba(255,255,255,0.7);
+}
+
+/* Header / Navbar */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1200;
+  transition: background 300ms ease, box-shadow 300ms ease, padding 300ms ease;
+  padding: 18px 0;
+}
+.header-inner {
+  width: 92%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* initial: transparent over hero */
+.header.transparent {
+  background: transparent;
+  box-shadow: none;
+}
+.header.solid {
+  background: var(--glass);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 30px rgba(20,20,20,0.06);
+  padding: 10px 0;
+  border-radius: 10px;
+  margin: 12px;
+}
+
+/* brand */
+.brand {
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.brand-icon { font-size: 1.25rem; }
+.brand-text { font-weight:700; color: var(--primary); letter-spacing:0.4px; }
+
+/* nav */
+.nav { display:flex; align-items:center; gap:18px; }
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 10px;
+  border-radius: 8px;
+  transition: color 180ms ease, background 180ms ease;
+}
+.nav-link:hover { color:#fff; opacity:0.95; }
+.nav .cta {
+  background: rgba(255,255,255,0.12);
+  padding: 8px 14px;
+  border-radius: 22px;
+  backdrop-filter: blur(4px);
+}
+
+/* On solid header (after scroll) show dark text */
+.header.solid .nav-link { color: #2b2b2b; }
+.header.solid .nav .cta { background: var(--gradient); color: #fff; }
+
+/* hero */
+.hero {
+  position: relative;
+  height: calc(100vh - 0px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(90%) contrast(95%) brightness(0.9);
+  transform-origin: center;
+  transition: transform 8s linear;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.28) 0%, rgba(0,0,0,0.48) 100%);
+}
+.hero-inner {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  max-width: 920px;
+  padding: 30px;
+  color: #fff;
+  animation: heroIn 900ms ease-out both;
+}
+.hero h1 {
+  font-size: clamp(28px, 4.2vw, 44px);
+  line-height: 1.05;
+  font-weight: 700;
+  margin-bottom: 14px;
+  text-shadow: 0 6px 24px rgba(0,0,0,0.35);
+}
+.hero .lead { font-size: 1.05rem; margin-bottom: 20px; color: rgba(255,255,255,0.95); }
+
+/* hero actions */
+.hero-actions { display:flex; gap: 14px; justify-content:center; flex-wrap:wrap; }
+.btn {
+  display:inline-block;
+  border: none;
+  cursor:pointer;
+  font-weight:600;
+  border-radius: 28px;
+  padding: 10px 20px;
+  text-decoration: none;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.btn.primary {
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  color: #fff;
+  box-shadow: 0 8px 26px rgba(201, 26, 96, 0.18);
+}
+.btn.primary:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(201, 26, 96, 0.22); }
+
+.btn.outline {
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+.btn.outline:hover { transform: translateY(-3px); }
+
+/* sections */
+.section { padding: 84px 6%;}
+.section.alt { background: var(--soft-bg); }
+.container{ max-width:1100px; margin: 0 auto; text-align: center; }
+
+/* headings */
+.section h2 {
+  font-family: 'Merriweather', serif;
+  color: var(--secondary);
+  font-size: 1.9rem;
+  margin-bottom: 12px;
+}
+.section .section-lead { color: var(--muted); max-width: 860px; margin: 0 auto 26px; }
+
+/* cards */
+.cards {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+  gap: 22px;
+  align-items: stretch;
+  margin-top: 18px;
+}
+.card {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 22px rgba(35,35,35,0.06);
+  transition: transform 280ms cubic-bezier(.2,.9,.2,1), box-shadow 280ms;
+  display:flex;
+  flex-direction: column;
+}
+.card img { width: 100%; height: 190px; object-fit: cover; }
+.card-body { padding: 16px; flex:1; }
+.card h3 { color: var(--primary); margin-bottom: 8px; }
+.card p { color: #555; line-height: 1.5; font-size: 0.95rem; }
+.card:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(156,39,176,0.12); }
+
+/* join / muted */
+.muted { color: #777; margin-top:10px; }
+
+/* footer */
+.footer { background: #f8f4f8; padding: 22px 0; margin-top: 28px; text-align:center; color: #555; }
+
+/* modal */
+.modal { position: fixed; inset: 0; background: rgba(0,0,0,0.5); display:flex; align-items:center; justify-content:center; z-index:1400; padding:20px;}
+.modal-panel {
+  background: #fff;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 14px;
+  padding: 20px;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(20,20,20,0.18);
+}
+.modal-close { position:absolute; right:12px; top:8px; border:none; background:none; font-size:22px; cursor:pointer; color:#666; }
+.modal-panel form { display:flex; flex-direction:column; gap:10px; margin-top:8px; }
+.modal-panel input { padding:10px; border-radius:8px; border:1px solid #e7e7e7; }
+
+/* small screens */
+@media (max-width: 860px) {
+  .header-inner { width:94%; }
+  .nav { gap:10px; }
+}
+
+/* mobile nav (toggle) */
+.nav-toggle { display:none; background:transparent; border:0; color:white; font-size:18px; }
+@media (max-width:760px) {
+  .nav-toggle { display:inline-flex; align-items:center; gap:8px; }
+  .nav { position: absolute; right: 20px; top: 64px; background: rgba(255,255,255,0.95); backdrop-filter: blur(6px); border-radius: 12px; padding: 12px; display:flex; flex-direction:column; gap:8px; min-width:150px; box-shadow: 0 12px 30px rgba(30,30,30,0.08); transform-origin: top right; }
+  .nav-link { color: #333; }
+  .header.transparent .nav { background: rgba(255,255,255,0.08); }
+}
+
+/* animations */
+@keyframes heroIn { from { transform: translateY(18px); opacity:0 } to { transform:none; opacity:1 } }
+.hidden { display:none !important; }
